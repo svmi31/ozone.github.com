@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Informatique | AlgoSquad</title>
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  </head>
+<body>
+  <div class="confetti-container">
+    <div class="message">Bienvenue dans l'équipe &lt;AlgoSquad/&gt;</div>
+  </div>
+  <div class="conteneur">
+    <h1>&lt;AlgoSquad/&gt;</h1>
+    <p class="description">AlgoSquad est un club informatique dédié à la collaboration, le partage de connaissances et à l'apprentissage. Nous croyons que le travail en équipe est la clé pour relever les défis technologiques et créer des solutions impactantes. Ensemble, nous explorons le monde des algorithmes, de la programmation, et des nouvelles technologies pour transformer nos idées en réalité. Rejoins-nous pour coder, apprendre et construire l'avenir, un projet à la fois !</p>
+    <div class="grille-infos">
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Atlantique International Business School (AIBS)</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-users"></i>
+        <span>Ouvert à tous</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-laptop"></i>
+        <span>Prérequis : un ordinateur</span>
+      </div>
+    </div>
+    <div class="liste-container">
+      <p>Rejoignez-nous pour :</p>
+      <ul>
+        <li>Apprendre de nouveaux langages</li>
+        <li>Travailler sur des projets passionnants</li>
+        <li>Rencontrer d'autres passionnés d'informatique</li>
+        <li>Participer à des défis informatiques</li>
+      </ul>
+    </div>
+    <a href="https://chat.whatsapp.com/I0FxeExXqJgBryJETA3IW2" class="bouton">Rejoins-nous maintenant !🚀</a>
+  </div>
+  </body>
+</html>
