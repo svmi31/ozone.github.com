@@ -7,7 +7,191 @@
   <link href="styles.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #7e5bef, #4b86e3);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .confetti-container {
+      background: linear-gradient(to bottom right, #7e5bef, #4b86e3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background-color: transparent;
+      opacity: 0.8;
+      transform: rotate(0deg);
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    .message {
+        width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.6rem;
+      text-align: center;
+      font-weight: bold;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .conteneur {
+      display: none;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      width: 100%;
+      padding: 40px;
+      text-align: center;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .conteneur.active {
+      display: flex;
+    }
+
+    h1 {
+        top: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .description {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .grille-infos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .info-item {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 16px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      gap: 12px;
+      flex: 1 1 calc(33.333% - 32px);
+      max-width: 280px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: #f1df12;
+    }
+
+    .liste-container {
+      text-align: left;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .bouton {
+      display: inline-block;
+      background: white;
+      color: #7e5bef;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .bouton:hover {
+      background: #f3e8ff;
+      color: #4b86e3;
+    }
+    @media (min-width: 768px){
+      .message{
+        font-size: 3.8em;
+      }
+      .description{
+        font-size: 1.5em;
+      }
+      .info-item span{
+        font-size: 1.2em;
+      }
+      .liste-container ul li{
+        font-size: 1.3em;
+      }
+      .bouton{
+        padding: 20px 36px;
+        font-size: 1.2em;
+      }
+      .liste-container p{
+        font-size: 1.5em;
+      }
+      .grille-infos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      flex-direction: row;
+    }
+    .info-item {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 22px 35px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      gap: 15px;
+      flex: 1 1 calc(33.333% - 32px);
+      max-width: 280px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1em;
+    }
+    }
+  </style>
+</head>
 <body>
   <div class="confetti-container">
     <div class="message">Bienvenue dans l'équipe &lt;AlgoSquad/&gt;</div>
@@ -40,5 +224,32 @@
     </div>
     <a href="https://chat.whatsapp.com/I0FxeExXqJgBryJETA3IW2" class="bouton">Rejoins-nous maintenant !🚀</a>
   </div>
-  </body>
+  <script>
+    const confettiContainer = document.querySelector('.confetti-container');
+    const welcomeMessage = document.querySelector('.message');
+    const mainContainer = document.querySelector('.conteneur');
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      const colors = ['#FF5733', '#33FF57', '#3357ff', '#fff333', '#f33fff'];
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confettiContainer.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }
+
+    for (let i = 0; i < 100; i++) {
+      setTimeout(createConfetti, i * 30);
+    }
+
+    setTimeout(() => {
+      welcomeMessage.style.opacity = 0;
+      setTimeout(() => {
+        confettiContainer.style.display = 'none';
+        mainContainer.classList.add('active');
+      }, 1000);
+    }, 2000);
+  </script>
+</body>
 </html>
